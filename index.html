@@ -67,6 +67,12 @@
     .btn:hover {
       background: #005bb5;
     }
+    .timer {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 1rem;
+      color: red;
+    }
     footer {
       text-align: center;
       padding: 1rem;
@@ -93,9 +99,10 @@
     <div class="promo">
       <h2>Special Offer: Get 10% Off</h2>
       <p>
-        Special discount for our 3 month plan! Get 3 months of reliable Geolocation API service 
+        Special discount for our 3-month plan! Get 3 months of reliable Geolocation API service 
         for only <strong><s>$38</s> $35</strong>.
       </p>
+      <div class="timer" id="countdown">Loading...</div>
       <div class="cta">
         <a href="/verification.html" class="btn">Get the API Now</a>
       </div>
@@ -104,5 +111,37 @@
   <footer>
     <p>&copy; 2024 apiip. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Get current date and calculate how many days until the next Friday
+    const now = new Date();
+    const currentDay = now.getDay();
+    const daysUntilFriday = (5 - currentDay + 7) % 7; // 5 is Friday
+    const targetDate = new Date(now);
+    targetDate.setDate(now.getDate() + daysUntilFriday); // Set to next Friday
+    targetDate.setHours(0, 0, 0, 0); // Set target time to midnight
+
+    // Update the countdown every 1 second
+    const countdown = document.getElementById('countdown');
+    const interval = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      // Time calculations for days, hours, minutes, and seconds
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the countdown
+      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      // If the countdown ends, display "EXPIRED"
+      if (distance < 0) {
+        clearInterval(interval);
+        countdown.innerHTML = "EXPIRED";
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
