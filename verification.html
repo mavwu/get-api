@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get the API</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    .container {
+      padding: 2rem 1rem;
+      max-width: 600px;
+      margin: 50px auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #0073e6;
+      margin-bottom: 1rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    input, select, button {
+      padding: 0.8rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    button {
+      background: #0073e6;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 1.5rem;
+    }
+    button:hover {
+      background: #005bb5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Get the API</h1>
+    <form action="success.html" method="POST">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Your Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="plan">Choose Plan:</label>
+      <select id="plan" name="plan">
+        <option value="3-months">3-Month Plan ($35)</option>
+        <option value="monthly">Monthly Plan ($10/month)</option>
+      </select>
+
+      <button><a style="color:white; text-decoration: none;" href="/success.html">Purchase API</a></button>
+    </form>
+  </div>
+</body>
+</html>
